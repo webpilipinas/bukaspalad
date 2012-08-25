@@ -19,13 +19,13 @@ PHP/MySQL powers **Bukas Palad** since it makes it even more easier to install o
 
 ##Making pull-requests
 
-1. Before anything, make sure to update the **MAIN BUKAS PALAD REPOSITORY**. (git checkout master; git pull origin master)
+1. Before anything, make sure to update your local copy of the **MAIN BUKAS PALAD REPOSITORY**. (git checkout master; git pull origin master)
 2. Once updated with the latest code, create a new branch with a branch name describing what your changes are (git checkout -b bugfix/login-system)
     Possible types:
     - bugfix
     - feature
     - improvement
-3. Always make sure to sign-off (-s) on all commits made (git commit -s -m "Commit message")
-4. Once you've committed all the code to this branch, push the branch to your **FORKED BUKAS PALAD REPOSITORY** (git push fork bugfix/login-system)
+3. After creating your code in the branch, commit the code. Always make sure to sign-off (-s) on all commits made (git commit -s -m "Commit message")
+4. Once you've committed all the changes for this branch, push the branch to your **FORKED BUKAS PALAD REPOSITORY** (git push fork bugfix/login-system)
 5. Go back to your **FORKED BUKAS PALAD REPOSITORY** on GitHub and submit a pull-request for that commit.
 6. Once your code has been reviewed and tested, it will be merged into the main repository
