@@ -7,7 +7,7 @@
 As an open-source web application, relief/donation centers are able to download the application, install it locally and use it with or without the internet.
 
 ##Technology
-**Bukas Palad** relies on the amazing Twitter Bootstrap (http://twitter.github.com/bootstrap) for the front-end, and the awesome Laravel PHP Framework (http://laravel.com) for the backend.
+**Bukas Palad** relies on the amazing Twitter Bootstrap (http://twitter.github.com/bootstrap) for the front-end and the awesome Laravel PHP Framework (http://laravel.com) for the backend.
 PHP/MySQL powers **Bukas Palad** since it makes it even more easier to install on any computer as opposed to other technologies (e.g. a person can create a portable version, complete with XAMPP and the **Bukas Palad** code).
 
 #Contibuting to the Bukas Palad Source
