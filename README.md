@@ -10,6 +10,17 @@ As an open-source web application, relief/donation centers are able to download 
 **Bukas Palad** relies on the amazing Twitter Bootstrap (http://twitter.github.com/bootstrap) for the front-end and the awesome Laravel PHP Framework (http://laravel.com) for the backend.
 PHP/MySQL powers **Bukas Palad** since it makes it even more easier to install on any computer as opposed to other technologies (e.g. a person can create a portable version of the whole application, complete with XAMPP and the **Bukas Palad** code).
 
+#Setting up Bukas Palad
+When setting up the **Bukas Palad** application, make sure to:
+1. Create a VirtualHost on your web server and point it to the **public** folder.
+2. Edit the **application/config/database.php** file credential to match the local MySQL database
+3. Edit the **application/config/settings.php** file to edit the Relief/Donation's Center name and the Group Pin to be used
+4. Run **php artisan migrate:install** to enable migrations
+5. Run **php artisan migrate** to run the migrations
+
+#Demo
+Try out **Bukas Palad** here: http://bukaspalad.appnimbus.com. The group-pin is **1111**
+
 #Contibuting to the Bukas Palad Source
 ##Setting up your machine with the the Bukas Palad repository and your repository fork
 
