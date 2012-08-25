@@ -1,0 +1,83 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.textaligncenter {
+	text-align: center !important;
+}
+
+.textalignright {
+	text-align: right !important;
+}
+
+.textalignleft {
+	text-align: left !important;
+}
+
+.verticalalignmiddle {
+	vertical-align: middle !important;
+}
+
+input:not([type="image"]), textarea {
+	box-sizing: content-box;
+}
+
+.smalltext {
+	font-size: 12px !important;
+}
+
+.smallertext {
+	font-size: 10px !important;
+}
+
+.wrap {
+	word-wrap: break-word !important;
+}
+
+.blue {
+	color: #08C;
+}
+
+.blue_bg {
+	background-color: #08C;
+}
+
+.red { 
+	color: #d61018;
+}
+
+.red_bg {
+	background-color: #d61018;
+}
+
+.yellow {
+	color: #dfb31b;
+}
+
+.yellow_bg {
+	background-color: #dfb31b;
+}
+
+.white {
+	color: #a6a6a6;
+}
+
+.white_bg {
+	background-color: #a6a6a6;
+}
+
+.navbar .brand {
+	padding: 0px 20px;
+	font-family: 'Kreon', serif;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.navbar .brand img {
+	padding: 5px 5px;
+}
+
+.form-inline-div {
+	margin-bottom: 5px;
+}
