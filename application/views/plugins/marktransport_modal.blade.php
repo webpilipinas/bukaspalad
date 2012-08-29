@@ -4,7 +4,7 @@
         <h3 class="modal_label">Mark Package as Transported</h3>
     </div>
     <div class="modal-body">
-        <form id="marktransport_modal_form" method="POST" action="/data/marktransport" class="form-inline">
+        <form id="marktransport_modal_form" method="POST" action="{{ action('data@marktransport') }}" class="form-inline">
             <div class="form-inline-div">
                 <h4>Transporting: Package #<strong id="package_id_mock"></strong></h4>
                 <input type="hidden" name="transport_package_id" id="transport_package_id" />

@@ -13,7 +13,7 @@
         </div>
     </form>
     <h4>For your convenience, we've listed a few default stock types. If you prefer, you can load these:</h4>
-    <a href="/data/load_default_stocks" class="btn">Load default stocks</a>
+    <a href="{{ action('data@load_default_stocks') }}" class="btn">Load default stocks</a>
 </div>
 
 @section('additional_handlebar_templates')

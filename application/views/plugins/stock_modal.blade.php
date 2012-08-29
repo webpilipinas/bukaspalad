@@ -4,7 +4,7 @@
         <h3 class="modal_label">Insert new Stock Types</h3>
     </div>
     <div class="modal-body">
-        <form action="/data/stocks" method="POST" class="form-inline" id="stock_modal_form">
+        <form action="{{ action('data@stocks') }}" method="POST" class="form-inline" id="stock_modal_form">
         <div id="sku_container_modal">
             <div class="form-inline-div" id="first_sku_div">
                 <input class="span3" type="text" placeholder="Stock type or SKU" id="sku" name="sku[]" />

@@ -5,7 +5,7 @@
 	<div class="row">
         <div class="span6">
             <h1>{{ Config::get('settings.group_name') }}</h1>
-            <form class="well" method="POST" action="/user/authenticate">
+            <form class="well" method="POST" action="{{ action('user@authenticate') }}">
             	@include('plugins.status')
                 <label for="username">Username</label>
                 <input type="text" placeholder="Your Username" name="username" id="username" />
@@ -23,7 +23,7 @@
         </div>
         
         <div class="span4">
-            <img src="/img/logo_hd.png" alt="{{ Config::get('project.title') }}" />
+            <img src="{{ asset('img/logo_hd.png') }}" alt="{{ Config::get('project.title') }}" />
         </div>
     </div>
 </div>

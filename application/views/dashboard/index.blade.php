@@ -10,7 +10,7 @@
                 <li><a href="#package_modal" data-toggle="modal">Create new Package</a></li>
                 <li><a href="#transport_modal" data-toggle="modal">Register new Transport</a></li>
                 <li><a href="#stock_modal" data-toggle="modal">Insert new Stock Type</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="{{ url('logout') }}">Logout</a></li>
             </ul>
         </div><!--/.well -->
         <div class="well sidebar-nav" id="action_well">
@@ -26,32 +26,32 @@
     </div><!--/span-->
     <div class="span9">
         @if (Stock::count() > 0)
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#donations_table_container" data-toggle="tab">Donations</a></li>
-            <li><a href="#packages_table_container" data-toggle="tab">Packages</a></li>
-            <li><a href="#transports_table_container" data-toggle="tab">Transports</a></li>
-            <li><a href="#stocks_table_container" data-toggle="tab">Stock Types</a></li>
-        </ul>
-        <div class="tab-content">
-        @include('plugins/donations_table')
-        @include('plugins/packages_table')
-        @include('plugins/transports_table')
-        @include('plugins/stocks_table')
-        </div>
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#donations_table_container" data-toggle="tab">Donations</a></li>
+                <li><a href="#packages_table_container" data-toggle="tab">Packages</a></li>
+                <li><a href="#transports_table_container" data-toggle="tab">Transports</a></li>
+                <li><a href="#stocks_table_container" data-toggle="tab">Stock Types</a></li>
+            </ul>
+            <div class="tab-content">
+                @include('plugins/donations_table')
+                @include('plugins/packages_table')
+                @include('plugins/transports_table')
+                @include('plugins/stocks_table')
+            </div>
         @else
-        @include('plugins/stock_helper')
+            @include('plugins/stock_helper')
         @endif
     </div>
 </div>
 @endsection
 
 @section('additional_modals')
-@include('plugins/donation_modal')
-@include('plugins/package_modal')
-@include('plugins/transport_modal')
-@include('plugins/stock_modal')
-@include('plugins/repack_modal')
-@include('plugins/marktransport_modal')
+    @include('plugins/donation_modal')
+    @include('plugins/package_modal')
+    @include('plugins/transport_modal')
+    @include('plugins/stock_modal')
+    @include('plugins/repack_modal')
+    @include('plugins/marktransport_modal')
 @endsection
 
 @section('additional_handlebar_templates')
