@@ -29,7 +29,10 @@
                     </td>
                     <td>
                         @if( $donation->is_repacked)
-                        Yes, included in <strong>Package #{{$donation->package_id}} ({{$donation->package->area}})</strong>
+                        Yes
+                        @if( !empty($donation->package))
+                        , included in <strong>Package #{{$donation->package_id}} ({{$donation->package->area}})</strong>
+                        @endif
                         @else
                         No
                         @endif
