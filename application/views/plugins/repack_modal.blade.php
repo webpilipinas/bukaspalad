@@ -10,28 +10,27 @@
                 <input type="hidden" name="donation_id" id="donation_id" />
             </div>
 
-            @if((Package::where('is_transported', '=', '0')->count()) == 0)
-                <div class="alert alert-info">Oops! No package available, create new one.</div>
+            @if ((Package::where('is_transported', '=', '0')->count()) == 0)
+            <div class="alert alert-info">Oops! No packages are available. <a href="#package_modal" data-toggle="modal">Click here to create a new one.</a></div>
             @else
-                <?php $available_package = 1 ?>
-                <div class="form-inline-div">
-                    <label for="package_id">Packed to:</label>
-                    <select name="package_id" id="package_id">
-                        @foreach ($packages as $package)
-                            @if ($package->is_transported != 1)
-                                <option value="{{$package->id}}">{{$package->area}} (Package #{{$package->id}})</option>
-                            @endif
-                        @endforeach
-                    </select>
-                </div>
+            <?php $packages_are_available = true ?>
+            <div class="form-inline-div">
+                <label for="package_id">Packed to:</label>
+                <select name="package_id" id="package_id">
+                    @foreach ($packages as $package)
+                    @if ($package->is_transported != 1)
+                    <option value="{{$package->id}}">{{$package->area}} (Package #{{$package->id}})</option>
+                    @endif
+                    @endforeach
+                </select>
+            </div>
             @endif
-
         </form>
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-        @if( isset($available_package) and ($available_package == 1))
-            <button class="btn btn-primary" data-loading-text="Posting..." onclick="$('#repack_modal_form').submit()">Mark as Repacked</button>
+        @if (isset($packages_are_available) and ($packages_are_available == true))
+        <button class="btn btn-primary" data-loading-text="Posting..." onclick="$('#repack_modal_form').submit()">Mark as Repacked</button>
         @endif
     </div>
 </div>
