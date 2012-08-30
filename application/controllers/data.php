@@ -14,7 +14,7 @@ class Data_Controller extends Base_Controller
         $sku = Input::get('sku');
         $unit = Input::get('unit');
 
-        $stock = array();
+        $added = array();
         foreach($sku as $k => $sk) {
             $un = $unit[$k];
             $stock = Stock::upsertStock($sk, $un);
