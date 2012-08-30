@@ -89,7 +89,7 @@ class Data_Controller extends Base_Controller
 
         $validation = Validator::make(Input::get(), array(
             'donator' => 'required',
-            'stock_ids' => 'required',
+            'stock_id' => 'required',
             'units' => 'required'
         ));
 
