@@ -4,7 +4,7 @@
         <h3 class="modal_label">Mark Donation as repacked</h3>
     </div>
     <div class="modal-body">
-        <form id="repack_modal_form" method="POST" action="/data/repack" class="form-inline">
+        <form id="repack_modal_form" method="POST" action="{{ action('data@repack') }}" class="form-inline">
             <div class="form-inline-div">
                 <h4>Repacking: Donation #<strong id="donation_id_mock"></strong></h4>
                 <input type="hidden" name="donation_id" id="donation_id" />
