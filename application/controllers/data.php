@@ -102,23 +102,13 @@ class Data_Controller extends Base_Controller
             return Redirect::to('dashboard');
         }
 
+        $stock_id_array = array();
+        $stock_id_rules = array();
         foreach($stock_ids as $sid) {
             if( empty($sid) ) {
                 Session::flash('error', 'Please make sure that you provide input on all the fields.');
                 return Redirect::to('dashboard');       
             }
-        }
-
-        foreach($units as $uid) {
-            if( empty($uid) ) {
-                Session::flash('error', 'Please make sure that you provide input on all the fields.');
-                return Redirect::to('dashboard');       
-            }
-        }
-
-        $stock_id_array = array();
-        $stock_id_rules = array();
-        foreach($stock_ids as $sid) {
             $stock_id_array["stock_{$sid}"] = $sid;
             $stock_id_rules["stock_{$sid}"] = 'exists:stocks';
         }
@@ -126,6 +116,24 @@ class Data_Controller extends Base_Controller
         $validate_stock_existence = Validator::make($stock_id_array, $stock_id_rules);
         if( $validation->fails() ) {
             Session::flash('error', 'The stock type provided did not exist.');
+            return Redirect::to('dashboard');
+        }
+
+        $unit_id_array = array();
+        $unit_id_rules = array();
+        foreach($units as $uid) {
+            if( empty($uid) ) {
+                Session::flash('error', 'Please make sure that you provide input on all the fields.');
+                return Redirect::to('dashboard');       
+            }
+            $unit_id_array["unit_{$sid}"] = $uid;
+            $unit_id_rules["unit_{$sid}"] = 'requied|integer|min:0';
+        }
+
+        
+        $validate_stock_existence = Validator::make($unit_id_array, $unit_id_rules);
+        if( $validation->fails() ) {
+            Session::flash('error', 'The ensure to provide a numeric unit amount.');
             return Redirect::to('dashboard');
         }
 
