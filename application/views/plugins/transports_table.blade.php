@@ -29,9 +29,9 @@
                     </td>
                     <td>
                         @if ($trans->is_available)
-                        <a href="/data/transport_availability/{{$trans->id}}/0" class="btn btn-danger btn-mini">Mark as unavailable</a>
+                        <a href="{{ action('data@transport_availability', array($trans->id, 0)) }}" class="btn btn-danger btn-mini">Mark as unavailable</a>
                         @else
-                        <a href="/data/transport_availability/{{$trans->id}}/1" class="btn btn-success btn-mini">Mark as available</a>
+                        <a href="{{ action('data@transport_availability', array($trans->id, 1)) }}" class="btn btn-success btn-mini">Mark as available</a>
                         @endif
                     </td>
                 </tr>

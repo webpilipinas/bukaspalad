@@ -30,7 +30,7 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" href="#"><img src="/img/logo.png" alt="Bukas Palad" width="30" />{{ Config::get('project.title') }}</a>
+                    <a class="brand" href="#"><img src="{{ asset('img/logo.png') }}" alt="Bukas Palad" width="30" />{{ Config::get('project.title') }}</a>
                     @section('navigation')
                     @yield_section
                     @section('post_navigation')

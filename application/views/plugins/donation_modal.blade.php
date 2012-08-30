@@ -4,7 +4,7 @@
         <h3 class="modal_label">Add a new Donation</h3>
     </div>
     <div class="modal-body">
-        <form id="donation_modal_form" method="POST" action="/data/donation" class="form-inline">
+        <form id="donation_modal_form" method="POST" action="{{ action('data@donation') }}" class="form-inline">
             <div class="form-inline-div">
                 <label for="donator">Donator</label>
                 <input type="text" name="donator" id="donator" placeholder="Name of Donator" />

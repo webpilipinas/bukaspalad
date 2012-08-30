@@ -4,7 +4,7 @@
         <h3 class="modal_label">Create a new Package</h3>
     </div>
     <div class="modal-body">
-        <form id="package_modal_form" method="POST" action="/data/package" class="form-inline">
+        <form id="package_modal_form" method="POST" action="{{ action('data@package') }}" class="form-inline">
             <div class="form-inline-div">
                 <input type="text" name="area" id="area" placeholder="Package's destination area" />
                 <input type="number" name="packs" id="packs" placeholder="Number of donation packs to send" />
