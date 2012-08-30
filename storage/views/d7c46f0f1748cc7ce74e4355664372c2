@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title><?php echo  Config::get('project.title') ; ?></title>
+        <?php echo  Asset::styles() ; ?>
+        <?php echo  Asset::scripts() ; ?>
+
+        <link rel="shortcut icon" href="/favicon.ico">
+
+        <style>
+        <?php \Laravel\Section::start('css'); ?>
+        <?php echo \Laravel\Section::yield_section(); ?>
+        </style>
+        
+        <script>
+        <?php \Laravel\Section::start('js'); ?>
+        <?php echo \Laravel\Section::yield_section(); ?>
+        </script>
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+ 
+    <body>
+        <?php if(isset($hide_main_nav) && $hide_main_nav == true): ?>
+        <?php else: ?>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#"><img src="<?php echo  asset('img/logo.png') ; ?>" alt="Bukas Palad" width="30" /><?php echo  Config::get('project.title') ; ?></a>
+                    <?php \Laravel\Section::start('navigation'); ?>
+                    <?php echo \Laravel\Section::yield_section(); ?>
+                    <?php \Laravel\Section::start('post_navigation'); ?>
+                    <?php echo \Laravel\Section::yield('post_navigation'); ?>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+
+        <div class="container" id="main_container">
+            <?php if(isset($hide_status_plugin) && $hide_status_plugin == true): ?>
+            <?php else: ?>
+            <?php echo view('plugins.status')->with(get_defined_vars())->render(); ?>
+            <?php endif; ?>
+            <?php echo \Laravel\Section::yield('content'); ?>
+            <footer>
+                <p>&copy; <span class="brand"><?php echo  Config::get('project.title') ; ?></span> <?php echo  date('Y'); ; ?></p>
+            </footer>
+        </div> <!-- /container -->
+
+        <div class="modal hide" id="generic_loading_modal">
+            <div class="modal-header">
+                <h3 id="generic_loading_modal_title"></h3>
+            </div>
+            <div class="modal-body">
+                <p id="generic_loading_modal_body"></p>
+            </div>
+        </div>
+        <?php \Laravel\Section::start('additional_modals'); ?>
+        <?php echo \Laravel\Section::yield_section(); ?>
+
+        <?php echo view('handlebar-templates.alert-box')->with(get_defined_vars())->render(); ?>
+        <?php \Laravel\Section::start('additional_handlebar_templates'); ?>
+        <?php echo \Laravel\Section::yield_section(); ?>
+    </body>
+</html>

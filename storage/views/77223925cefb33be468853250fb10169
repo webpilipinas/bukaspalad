@@ -1,0 +1,50 @@
+
+<?php \Laravel\Section::start('content'); ?>
+<div class="hero-unit">
+	<div class="row">
+        <div class="span6">
+            <h1><?php echo  Config::get('settings.group_name') ; ?></h1>
+            <form class="well" method="POST" action="<?php echo  action('user@authenticate') ; ?>">
+            	<?php echo view('plugins.status')->with(get_defined_vars())->render(); ?>
+                <label for="username">Username</label>
+                <input type="text" placeholder="Your Username" name="username" id="username" />
+                <label for="pin">Group Pin</label>
+                <input type="text" placeholder="4-Digit Group Pin" name="pin" id="pin" />
+                <?php if(Config::get('settings.show_group_pin') === true): ?>
+                <h6>Group pin is: <?php echo Config::get('settings.pin'); ?></h6>
+                <?php endif; ?>
+                <div class="btn-group">
+                	<?php for($x = 1; $x < 10; $x++): ?>
+                	<button class="btn btn-small" type="button" onclick="$('#pin').val($('#pin').val() + '' +$(this).text())"><?php echo $x; ?></button>
+                	<?php endfor; ?>
+                	<button type="button" class="btn btn-small btn-danger" onclick="$('#pin').val('')">Clear</button>
+                </div>
+                <br />
+                <button type="submit" class="btn btn-success">Login</button>
+            </form>
+        </div>
+        
+        <div class="span4">
+            <img src="<?php echo  asset('img/logo_hd.png') ; ?>" alt="<?php echo  Config::get('project.title') ; ?>" />
+        </div>
+    </div>
+</div>
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start('js'); ?>
+@parent
+<?php //  <script>  ?>
+$(document).ready(function() {
+});
+<?php //  </script>  ?>
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start('css'); ?>
+@parent
+<?php //  <style>  ?>
+.hero-unit h1 {
+	margin-bottom: 30px;
+}
+<?php //  </style>  ?>
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('layouts/main')->with(get_defined_vars())->render(); ?>

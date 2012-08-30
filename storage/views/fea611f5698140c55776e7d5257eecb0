@@ -1,0 +1,19 @@
+<?php if(!is_null(Session::get('success'))): ?>
+<?php echo view('plugins.status_success')->with(get_defined_vars())->render(); ?>
+<?php endif; ?>
+
+<?php if(!is_null(Session::get('error'))): ?>
+<?php echo view('plugins.status_error')->with(get_defined_vars())->render(); ?>
+<?php endif; ?>
+
+<?php if(isset($errors) && count($errors->all()) > 0): ?>
+<?php echo view('plugins.validation_errors')->with(get_defined_vars())->render(); ?>
+<?php endif; ?>
+
+<?php if(!is_null(Session::get('info'))): ?>
+<?php echo view('plugins.status_info')->with(get_defined_vars())->render(); ?>
+<?php endif; ?>
+
+<?php if(!is_null(Session::get('warning'))): ?>
+<?php echo view('plugins.status_warning')->with(get_defined_vars())->render(); ?>
+<?php endif; ?>
