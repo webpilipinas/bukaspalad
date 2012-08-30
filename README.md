@@ -16,6 +16,9 @@ When setting up the **Bukas Palad** application, make sure to:
 1. Create a VirtualHost on your web server and point it to the **public** folder.
 2. Edit the **application/config/database.php** file credential to match the local MySQL database
 3. Edit the **application/config/settings.php** file to edit the Relief/Donation's Center name and the Group Pin to be used
+	- **pin** - the group pin to be used by everyone to log into the system
+	- **group_name** - the group name to show on the home page
+	- **show_group_pin** - set this to **true** to show the pin on the home page
 4. Run **php artisan migrate:install** to enable migrations
 5. Run **php artisan migrate** to run the migrations
 
