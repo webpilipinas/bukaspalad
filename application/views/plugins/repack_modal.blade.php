@@ -10,21 +10,29 @@
                 <input type="hidden" name="donation_id" id="donation_id" />
             </div>
 
-            <div class="form-inline-div">
-                <label for="package_id">Packed to:</label>
-                <select name="package_id" id="package_id">
-                    @foreach ($packages as $package)
-                    @if ($package->is_transported != 1)
-                    <option value="{{$package->id}}">{{$package->area}} (Package #{{$package->id}})</option>
-                    @endif
-                    @endforeach
-                </select>
-            </div>
+            @if((Package::where('is_transported', '=', '0')->count()) == 0)
+                <div class="alert alert-info">Oops! No package available, create new one.</div>
+            @else
+                <?php $available_package = 1 ?>
+                <div class="form-inline-div">
+                    <label for="package_id">Packed to:</label>
+                    <select name="package_id" id="package_id">
+                        @foreach ($packages as $package)
+                            @if ($package->is_transported != 1)
+                                <option value="{{$package->id}}">{{$package->area}} (Package #{{$package->id}})</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+            @endif
+
         </form>
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-        <button class="btn btn-primary" data-loading-text="Posting..." onclick="$('#repack_modal_form').submit()">Mark as Repacked</button>
+        @if( isset($available_package) and ($available_package == 1))
+            <button class="btn btn-primary" data-loading-text="Posting..." onclick="$('#repack_modal_form').submit()">Mark as Repacked</button>
+        @endif
     </div>
 </div>
 
