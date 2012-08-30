@@ -110,7 +110,7 @@ class Data_Controller extends Base_Controller
                 return Redirect::to('dashboard');       
             }
             $stock_id_array["stock_{$sid}"] = $sid;
-            $stock_id_rules["stock_{$sid}"] = 'exists:stocks';
+            $stock_id_rules["stock_{$sid}"] = 'exists:stocks,id';
         }
 
         $validate_stock_existence = Validator::make($stock_id_array, $stock_id_rules);
@@ -198,8 +198,8 @@ class Data_Controller extends Base_Controller
         $package_id = Input::get('package_id');
 
         $validation = Validator::make(Input::get(), array(
-            'donation_id' => 'required|exists:donations',
-            'package_id' => 'required|exists:packages', 
+            'donation_id' => 'required|exists:donations,id',
+            'package_id' => 'required|exists:packages,id', 
         ));
 
         if( $validation->fails() ) {
@@ -250,6 +250,18 @@ class Data_Controller extends Base_Controller
 
     public function get_transport_availability($tid, $avail)
     {
+        $validation = Validator::make(array(
+            'transport_id' => $tid,
+            'availability' => $avail
+        ), array(
+            'transport_id' => 'required|exists:transports,id',
+            'availability' => 'required|in:0,1', 
+        ));
+
+        if( $validation->fails() ) {
+            return Redirect::to('dashboard')->with_errors($validation);
+        }
+
         $transport = Transport::find($tid);
         $transport->is_available = $avail;
         $transport->save();
