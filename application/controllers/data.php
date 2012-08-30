@@ -171,7 +171,7 @@ class Data_Controller extends Base_Controller
 
         $validation = Validator::make(Input::get(), array(
             'area' => 'required',
-            'packs' => 'integer|min:1', 
+            'packs' => 'required|integer|min:1', 
         ));
 
         if( $validation->fails() ) {
