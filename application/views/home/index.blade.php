@@ -11,6 +11,9 @@
                 <input type="text" placeholder="Your Username" name="username" id="username" />
                 <label for="pin">Group Pin</label>
                 <input type="text" placeholder="4-Digit Group Pin" name="pin" id="pin" />
+                @if (Config::get('settings.show_group_pin') === true)
+                <h6>Group pin is: {{Config::get('settings.pin')}}</h6>
+                @endif
                 <div class="btn-group">
                 	@for ($x = 1; $x < 10; $x++)
                 	<button class="btn btn-small" type="button" onclick="$('#pin').val($('#pin').val() + '' +$(this).text())">{{$x}}</button>
