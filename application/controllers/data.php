@@ -28,9 +28,11 @@ class Data_Controller extends Base_Controller
                 $added,
                 Auth::user()
             ));
+            Session::flash('success', 'Successfully created new stock.');
+        } else {
+            Session::flash('error', 'Please provide valid values to the stock type fields.');
         }
 
-        Session::flash('success', 'Successfully created new stock.');
         return Redirect::to('dashboard');
     }
 
@@ -85,6 +87,48 @@ class Data_Controller extends Base_Controller
         $stock_ids = Input::get('stock_id');
         $units = Input::get('units');
 
+        $validation = Validator::make(Input::get(), array(
+            'donator' => 'required',
+            'stock_ids' => 'required',
+            'units' => 'required'
+        ));
+
+        if( $validation->fails() ) {
+            return Redirect::to('dashboard')->with_errors($validation);
+        }
+
+        if( count($stock_ids) != count($units) ) {
+            Session::flash('error', 'Please make sure that you provide input on all the fields.');
+            return Redirect::to('dashboard');
+        }
+
+        foreach($stock_ids as $sid) {
+            if( empty($sid) ) {
+                Session::flash('error', 'Please make sure that you provide input on all the fields.');
+                return Redirect::to('dashboard');       
+            }
+        }
+
+        foreach($units as $uid) {
+            if( empty($uid) ) {
+                Session::flash('error', 'Please make sure that you provide input on all the fields.');
+                return Redirect::to('dashboard');       
+            }
+        }
+
+        $stock_id_array = array();
+        $stock_id_rules = array();
+        foreach($stock_ids as $sid) {
+            $stock_id_array["stock_{$sid}"] = $sid;
+            $stock_id_rules["stock_{$sid}"] = 'exists:stocks';
+        }
+
+        $validate_stock_existence = Validator::make($stock_id_array, $stock_id_rules);
+        if( $validation->fails() ) {
+            Session::flash('error', 'The stock type provided did not exist.');
+            return Redirect::to('dashboard');
+        }
+
         $stock = array();
         $donation = new Donation();
         $donation->fill(array(
@@ -117,6 +161,15 @@ class Data_Controller extends Base_Controller
         $area = Input::get('area');
         $packs = Input::get('packs');
 
+        $validation = Validator::make(Input::get(), array(
+            'area' => 'required',
+            'packs' => 'integer|min:1', 
+        ));
+
+        if( $validation->fails() ) {
+            return Redirect::to('dashboard')->with_errors($validation);
+        }
+
         $package = new Package();
         $package->area = $area;
         $package->packs = $packs;
@@ -136,6 +189,15 @@ class Data_Controller extends Base_Controller
         $donation_id = Input::get('donation_id');
         $package_id = Input::get('package_id');
 
+        $validation = Validator::make(Input::get(), array(
+            'donation_id' => 'required|exists:donations',
+            'package_id' => 'required|exists:packages', 
+        ));
+
+        if( $validation->fails() ) {
+            return Redirect::to('dashboard')->with_errors($validation);
+        }
+
         $donation = Donation::find($donation_id);
         $donation->package_id = $package_id;
         $donation->is_repacked = 1;
@@ -154,6 +216,15 @@ class Data_Controller extends Base_Controller
     {
         $transport_name = Input::get('transport_name');
         $car_type = Input::get('car_type');
+
+        $validation = Validator::make(Input::get(), array(
+            'transport_name' => 'required',
+            'car_type' => 'required', 
+        ));
+
+        if( $validation->fails() ) {
+            return Redirect::to('dashboard')->with_errors($validation);
+        }
 
         $transport = new Transport();
         $transport->name = $transport_name;
@@ -188,6 +259,15 @@ class Data_Controller extends Base_Controller
     {
         $transport_id = Input::get('transport_id');
         $package_id = Input::get('transport_package_id');
+
+        $validation = Validator::make(Input::get(), array(
+            'transport_id' => 'required|exists:transports',
+            'transport_package_id' => 'required|exists:packages'
+        ));
+
+        if( $validation->fails() ) {
+            return Redirect::to('dashboard')->with_errors($validation);
+        }
 
         $package = Package::find($package_id);
         $package->is_transported = 1;
