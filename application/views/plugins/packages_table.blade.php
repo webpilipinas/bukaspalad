@@ -24,7 +24,12 @@
                     </td>
                     <td>
                         @if ($package->is_transported)
+                        <?php $ptransport = Transport::find($package->transport_id); ?>
+                        @if (!empty($ptransport))
                         <span class="label label-success">Transported by {{ Transport::find($package->transport_id)->name }}</span>
+                        @else
+                        <span class="label label-success">Transported</span>
+                        @endif
                         @else
                         <button type="button" class="btn btn-mini" onclick="handleTransport({{$package->id}})">Mark as transported</button>
                         @endif
