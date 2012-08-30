@@ -269,7 +269,7 @@ class Data_Controller extends Base_Controller
         $package_id = Input::get('transport_package_id');
 
         $validation = Validator::make(Input::get(), array(
-            'transport_id' => 'required|exists:transport_package_id,id',
+            'transport_id' => 'required|exists:transports,id',
             'transport_package_id' => 'required|exists:packages,id'
         ));
 
