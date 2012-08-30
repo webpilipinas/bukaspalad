@@ -127,7 +127,7 @@ class Data_Controller extends Base_Controller
                 return Redirect::to('dashboard');       
             }
             $unit_id_array["unit_{$sid}"] = $uid;
-            $unit_id_rules["unit_{$sid}"] = 'requied|integer|min:0';
+            $unit_id_rules["unit_{$sid}"] = 'requied|integer|min:1';
         }
 
         
