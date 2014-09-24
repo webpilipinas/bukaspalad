@@ -22,9 +22,6 @@ When setting up the **Bukas Palad** application, make sure to:
 4. Run **php artisan migrate:install** to enable migrations
 5. Run **php artisan migrate** to run the migrations
 
-#Demo
-Try out **Bukas Palad** here: http://bukaspalad.appnimbus.com. The group-pin is **1111**
-
 #Contibuting to the Bukas Palad Source
 ##Setting up your machine with the the Bukas Palad repository and your repository fork
 
