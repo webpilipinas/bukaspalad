@@ -1,5 +1,7 @@
 #Bukas Palad
 
+http://bukas-palad.org
+
 ##Donation and Resources Management System
 **Bukas Palad** is self-hosted Donation and Resources Management System designed to help relief/donation centers handle donations given by people and managing resources used to repackage, assign and transport donation packs to areas that need them. It allows for multiple team members to use it at the same time, and helps keep everybody updates by publishing all activity to an update stream.
 
