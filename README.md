@@ -1,18 +1,18 @@
-#Bukas Palad
+# Bukas Palad
 
 http://bukas-palad.org
 
-##Donation and Resources Management System
+## Donation and Resources Management System
 **Bukas Palad** is self-hosted Donation and Resources Management System designed to help relief/donation centers handle donations given by people and managing resources used to repackage, assign and transport donation packs to areas that need them. It allows for multiple team members to use it at the same time, and helps keep everybody updates by publishing all activity to an update stream.
 
-##Free (as in Beer) and Open-Source
+## Free (as in Beer) and Open-Source
 As an open-source web application, relief/donation centers are able to download the application, install it locally and use it with or without the internet.
 
-##Technology
+## Technology
 **Bukas Palad** relies on the amazing Twitter Bootstrap (http://twitter.github.com/bootstrap) for the front-end and the awesome Laravel PHP Framework (http://laravel.com) for the backend.
 PHP/MySQL powers **Bukas Palad** since it makes it even more easier to install on any computer as opposed to other technologies (e.g. a person can create a portable version of the whole application, complete with XAMPP and the **Bukas Palad** code).
 
-#Setting up Bukas Palad
+# Setting up Bukas Palad
 When setting up the **Bukas Palad** application, make sure to:
 
 1. Create a VirtualHost on your web server and point it to the **public** folder.
@@ -24,14 +24,14 @@ When setting up the **Bukas Palad** application, make sure to:
 4. Run **php artisan migrate:install** to enable migrations
 5. Run **php artisan migrate** to run the migrations
 
-#Contibuting to the Bukas Palad Source
-##Setting up your machine with the the Bukas Palad repository and your repository fork
+# Contibuting to the Bukas Palad Source
+## Setting up your machine with the the Bukas Palad repository and your repository fork
 
 1. Fork the main Bukas Palad repository (https://github.com/webpilipinas/bukaspalad)
 2. Fire up your local terminal and clone the **MAIN BUKAS PALAD REPOSITORY** (git clone git://github.com/webpilipinas/bukaspalad.git)
 3. Add your **FORKED BUKAS PALAD REPOSITORY** as a remote (git remote add fork git@github.com:**github_username**/bukaspalad.git)
 
-##Making pull-requests
+## Making pull-requests
 
 1. Before anything, make sure to update your local copy of the **MAIN BUKAS PALAD REPOSITORY**. (git checkout master; git pull origin master)
 2. Once updated with the latest code, create a new branch with a branch name describing what your changes are (git checkout -b bugfix/login-system)
